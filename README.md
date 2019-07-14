@@ -1,7 +1,7 @@
 # G3F
 **Important Note to User:** This software requires IgorPro v. 8.0 to run.
 
-The G3F is a **Global, Multidimensional Spectral Regression Analysis** package for IgorPro. It allows to apply flexible combinations of global parameters and dimensionally local (spectral) parameters to 2- and 3-dimensional data matices.
+The G3F is a **Global, Multidimensional Spectral Regression Analysis** package for IgorPro. It allows to apply flexible combinations of global parameters and dimensionally local (spectral) parameters to 2- and 3-dimensional data matrices.
 
 **LOADING AND OPENING G3F IN IGOR PRO:**
 
