@@ -360,7 +360,7 @@ Open Demo\_G3F.pxp
 
 Experiment should load G3F code automatically. If G3F\_main.ipf cannot be found, IgorPro will present a dialog that will allow to navigate to the G3F folder.
 
-Demo experiment will also load the SpecEchem\_4Spec\_ForOxd\_2.ipf procedure from the Demo folder with the examlpe user-supplied fitting function. 
+Demo experiment will also load the SpecEchem\_4Spec\_ForOxd\_2.ipf procedure from the Demo folder with the example of user-supplied fitting function. 
 
 The main control panel should look like this:
 
