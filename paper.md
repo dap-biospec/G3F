@@ -58,4 +58,7 @@ Internally, G3F uses the concept of proxy functions. From IgorPro standpoint, th
 
 In addition to handling data folding and fitting calls, G3F include a number of utilities helpful in the process of multidimensional fitting and the analysis of results. If allows to automatically alternate fitting of dimensional variable subsets, which can greatly facilitate convergence of initial guesses of local parameters are far from optimal. G3F provides several options for obtaining visual feedback on fitness of model to experimental data. 
 
+# Acknowledgments
+This work was supported by the National Institutes of Health grants GM096132 and EY028049.
+
 # References
