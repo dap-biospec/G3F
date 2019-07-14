@@ -1,5 +1,5 @@
 ---
-title: 'G3F: Multidimensional deconvolution and simulation of related data sets'
+title: 'G3F: Global, Multidimensional Spectral Regression Analysis'
 tags:
   - Igor Pro
   - chemistry
