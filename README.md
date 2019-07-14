@@ -38,3 +38,9 @@ For further details on G3F structure and function, please see:<br/>
 [G3F Manual](https://github.com/dap-biospec/G3F/blob/master/G3F_Manual.md)
 
 A [Demo Experiment](https://github.com/dap-biospec/G3F/blob/master/Demo) is included with this package. The tutorial is in the [Demo Experiment](https://github.com/dap-biospec/G3F/blob/master/G3F_Manual.md#demo-experiment) section of the manual.
+
+## Community Guidelines
+This file is part of G3F project. For citation, attribution and illustrations see <https://pubs.acs.org/doi/10.1021/acs.analchem.9b00859> 
+G3F is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.
+G3F is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License along with this file.  If not, see <https://www.gnu.org/licenses/>.
