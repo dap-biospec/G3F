@@ -10,21 +10,20 @@ tags:
   - non-linear global regression
   - simulation software
 authors: 
-  - name: Allison M. Stettler
-    orcid: 0000-0002-8910-1929
-    affiliation: 1
+ - name: Allison M. Stettler
+   orcid: 0000-0002-8910-1929
+   affiliation: 1
  - name: Christopher W. John
-    orcid: 0000-0003-1713-1229
-    affiliation: 1
-- name: Yegor D. Proshlyakov
-    orcid: 
-    affiliation: 1
-- name: Denis A. Proshlyakov
-    orcid: 0000-0003-4625-0323
-    affiliation: 1
+   orcid: 0000-0003-1713-1229
+   affiliation: 1
+ - name: Yegor D. Proshlyakov
+   affiliation: 1
+ - name: Denis A. Proshlyakov
+   orcid: 0000-0003-4625-0323
+   affiliation: 1
 affiliations:
-  - name: Department of Chemistry, Michigan State University
-    index: 1
+ - name: Department of Chemistry, Michigan State University
+   index: 1
 date: 13 July 2019
 bibliography: paper.bib
 
