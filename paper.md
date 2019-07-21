@@ -17,6 +17,7 @@ authors:
    orcid: 0000-0003-1713-1229
    affiliation: 1
  - name: Yegor D. Proshlyakov
+   orcid: 0000-0002-7719-6553
    affiliation: 1
  - name: Denis A. Proshlyakov
    orcid: 0000-0003-4625-0323
