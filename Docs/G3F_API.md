@@ -3,7 +3,7 @@
 
 **Introduction:** Most of G3F functionality is accomplished via G3F Control Panel GUI interface with the exception of user-supplied calculation functions. G3F supports multiple types of calculations, that may require the user two supply a calculation function that will comply with a particular template format. Such templates are listed at the beginning of this API document. Further explanation and examples can be found in the G3F Manual. G3F is thread-aware and requires the threadsafe keyword for user-supplied functions to be recognized. Template functions cannot be used directly. For development purposes, create a clone of the function without TPL suffix.
 
-This API covers two sections: user-supplied function templates, and internal functions used by the G3F module up to the execution of the user-supplied function. For the explanation of standard Igor keywords, please consult Igor Pro manual. For further explanation of the G3F package, consult the [G3F Manual](https://github.com/dap-biospec/G3F/blob/master/G3F_Manual.md)
+This API covers two sections: user-supplied function templates, and internal functions used by the G3F module up to the execution of the user-supplied function. For the explanation of standard Igor keywords, please consult Igor Pro manual. For further explanation of the G3F package, consult the [G3F Manual](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_Manual.md)
 
 ### **TABLE OF CONTENTS:**
 
@@ -28,7 +28,7 @@ This API covers two sections: user-supplied function templates, and internal fun
 These are all functions that must be supplied by the user in order to perfom calculations for quantitative models. Templates are provided for easy integration into models.
 
 #### Template Functions  
-These functions are all templates that MUST be modified by a user to perform calculations per quantitative model. These functions fit data, calculate simulations of the user-defined model, and calculate local parameters. For more information, see  [Fitting Functions](https://github.com/dap-biospec/G3F/blob/master/G3F_Manual.md#fitting-functions) 
+These functions are all templates that MUST be modified by a user to perform calculations per quantitative model. These functions fit data, calculate simulations of the user-defined model, and calculate local parameters. For more information, see  [Fitting Functions](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_Manual.md#fitting-functions) 
 
 #### Direct Fitting Function Templates  
 Template direct functions for handling the fitting of data. Direct functions perform direct fitting on experimental data sets.
