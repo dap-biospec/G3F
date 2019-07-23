@@ -35,7 +35,7 @@ For further details on G3F structure and function, please see:<br/>
 [G3F API](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_API.md)<br/>
 [G3F Manual](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_Manual.md)
 
-A [Demo Experiment](https://github.com/dap-biospec/G3F/blob/master/Demo) is included with this package. The tutorial is in the [Demo Experiment](https://github.com/dap-biospec/G3F/blob/master/G3F_Manual.md#demo-experiment) section of the manual.
+A [Demo Experiment](https://github.com/dap-biospec/G3F/blob/master/Demo) is included with this package. The tutorial is in the [Demo Experiment](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_Manual.md#demo-experiment) section of the manual.
 
 ## Community Guidelines
 Bug reports and requests for improvements, and new features are welcomed! Please feel free to make a post to [Biospec Github Issue Tracker](https://github.com/dap-biospec/G3F/issues) or contact Denis A. Proshlyakov, [dapro@chemistry.msu.edu](mailto:dapro@chemistry.msu.edu)
