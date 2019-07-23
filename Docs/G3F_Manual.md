@@ -40,7 +40,7 @@ Analysis -> Global 3D Spectral Regression -> Control Panel
 
 The overall data structure of the datasets handled by G3F is shown below:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/3D_DataStructure_B.JPG)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/3D_DataStructure_B.JPG)
 
 Data sets consist of &quot;layers&quot; of matrices with &quot;row&quot;, &quot;column&quot; and &quot;layer&quot; calibrations. The 2D layers of this data structure are shown conceptually below:
 
