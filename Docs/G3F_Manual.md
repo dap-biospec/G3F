@@ -6,7 +6,7 @@ The G3F (Global 3-dimensional Fit) is a simulation and fitting package for IgorP
 
 **How to use this manual:** This manual summarizes the capabilities of the G3F software IgorPro macro. The functions of all features are briefly summarized and documented for easy reference. Basic knowledge of Igor Pro operation and data structures within Igor Pro is assumed. **For quick help, hover over functions on the control panel for simple tooltips.**
 
-For further detail on individual functions, consult the [G3F API](https://github.com/dap-biospec/G3F/blob/master/G3F_API.md)
+For further detail on individual functions, consult the [G3F API](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_API.md)
 
 ### **LOADING AND OPENING G3F IN IGOR PRO:**
 
@@ -252,7 +252,7 @@ This section allows for specific configurations to be saved to the desktop for e
 
 ### Fitting Functions
 
-For the G3F model to function, specific syntax for fitting functions must be observed. There are three types of processes present in fitting functions: direct, process and local process. Direct fitting functions fit the experimental data given the user-defined model and input parameters. Process functions allow the user to predict a process that can later be used in fitting simulations given the user-defined model and input parameters. Local Process fitting functions calculate and fit local parameters. An example fitting function template is shown below. See the [API](https://github.com/dap-biospec/G3F/blob/master/G3F_API.md#template-functions) for further examples:
+For the G3F model to function, specific syntax for fitting functions must be observed. There are three types of processes present in fitting functions: direct, process and local process. Direct fitting functions fit the experimental data given the user-defined model and input parameters. Process functions allow the user to predict a process that can later be used in fitting simulations given the user-defined model and input parameters. Local Process fitting functions calculate and fit local parameters. An example fitting function template is shown below. See the [API](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_API.md#template-functions) for further examples:
 
     ThreadSafe function YourFittingFunction_3D(wY, wCClb, wRClb,  wLClb , wGP, wCP2D, wRP2D,  wLP2D, wLCP2D, wLRP2D , row,  lay , dFrom, dTo) :FitFunc
     wave wY; // calculated Y wave
