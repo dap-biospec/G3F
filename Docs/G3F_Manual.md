@@ -44,21 +44,21 @@ The overall data structure of the datasets handled by G3F is shown below:
 
 Data sets consist of &quot;layers&quot; of matrices with &quot;row&quot;, &quot;column&quot; and &quot;layer&quot; calibrations. The 2D layers of this data structure are shown conceptually below:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/DataStructure_Simple.JPG)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/DataStructure_Simple.JPG)
 
 The dimensionality of this data structure is further expanded with Layer-Column (LCP2D) and Layer-Row (LRP2D) dimensions, as shown below:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/DataStructure_2.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/DataStructure_2.png)
  
  An alternative depiction of this data structure with emphasis on the roles of global parameters and local parameters is shown below:
 
- ![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/DataStructure_3.jpg)
+ ![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/DataStructure_3.jpg)
  
 Row, column, and layer locals are calculated parameters, whereas global parameters are parameters which remain consistent throughout the data set.
 
 ### Summary of G3F User Interface
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/ControlPanel.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/ControlPanel.png)
 
 The main control panel of the G3F macro is split into several different sections, each of which are detailed below:
 
@@ -96,7 +96,7 @@ This section covers the input data parameters.
 
 Masks are used to block out signals from fitting. Sections of data may be &quot;masked&quot; and therefore not considered for the fit. An example of this concept is spectroscopic data when fitting a baseline – peak signals must be excluded from the baseline fit in order to preserve meaningful data through the baseline fit.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/Mask_Example.jpg)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/Mask_Example.jpg)
 
 - Z(Col): This allows the user to specify a mask wave for the column dimension of data sets
 
@@ -330,7 +330,7 @@ This procedure is a simple Lorentzian function for several isotopes with local v
 
 On the **Method** section on the Control Panel, the user may select a pre-compiled fitting function on the drop-down menu **Fit to function** as shown below:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/LoadFunction.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/LoadFunction.png)
 
 The function selected in the **Fit to function** dialog will be used to fit experimental data.
 
@@ -338,11 +338,11 @@ The function selected in the **Fit to function** dialog will be used to fit expe
 
 Three-dimensional datasets may be loaded as a 3D matrix into IgorPro and selected using the **Dataset** dropdown menu as shown below:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/LoadData_1.png) 
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/LoadData_1.png) 
 
 When all necessary parameters have been set on the control panel, the fit may be tested using the **Simulate** button on the **Global fit** tab on the main control panel interface. If the results are satisfactory, the fit can be performed by clicking the **Do fit now!** button.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/G3FManualPictures/DoFit_Button.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Docs/G3FManualPictures/DoFit_Button.png)
  
 The results of this fit are stored in data structures for all parameters (global variables, local variables, and fitted data) for easy extraction, plotting and analysis by the user.
 
@@ -356,7 +356,7 @@ Download G3F as described in the Installation section.
 
 Download folder and save as a sibling folder of the G3F folder.
 
-Open Demo\_G3F.pxp
+Open Demo_G3F.pxp
 
 Experiment should load G3F code automatically. If G3F\_main.ipf cannot be found, IgorPro will present a dialog that will allow to navigate to the G3F folder.
 
@@ -364,7 +364,7 @@ Demo experiment will also load the SpecEchem\_4Spec\_ForOxd\_2.ipf procedure fro
 
 The main control panel should look like this:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_1_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_1_Demo.png)
 
 The control panel should be set up for package testing.
 
@@ -378,11 +378,11 @@ Go to the **Fit to function** drop-down menu. Select &quot;SpecEChem_4Spec_ForOx
 
 The global parameters displayed on the control panel correspond to the redox potentials and electron transfer coefficients of each mediator.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_2_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_2_Demo.png)
 
 As there are 2 mediators and myoglobin present, the data must be deconvoluted to isolate the spectrum and Nernstian profile of myoglobin. To do this, four local parameters are set (methylene green has two electron transfer steps), each corresponding to a spectrum specific to the analyte.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_3_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_3_Demo.png)
 
 In this experiment, all baselines are set to zero (Col(Z) Locals). These are not used in this simulation.
 
@@ -390,7 +390,7 @@ Next, holds must be set on known parameters. The electron transfer coefficients 
 
 Go to the **Matrix Constraints** button.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_4_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_4_Demo.png)
 
 Hold all variables (K0 through K5) by checking the **Hold** field. These correspond to the electron transfer coefficients and redox potentials of the mediators – all of which are known. The last two fields correspond to the electron transfer coefficient and redox potential of myoglobin. When finished, press **Done**.
 
@@ -402,11 +402,11 @@ Now that the simulation has been performed, the separate spectra can be plotted 
 
 Go to the Data Browser field and select Oxidation\_RowLoc
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_5_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_5_Demo.png)
 
 Clicking on this brings up a set of data:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_6_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
 
 This fitted data set corresponds to each individual spectrum of each mediator and myoglobin. To plot this data for easy comparison, go to
 
@@ -414,15 +414,15 @@ Windows ->New Graph…
 
 Select Oxidation\_RowLocal in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_7_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_7_Demo.png)
 
 Click **Do It.**  This should generate a plot of each individual mediator and myoglobin:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_8_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_8_Demo.png)
 
 To extract the Nernstian profiles, go to the **Feedback positions** field on the main control panel. Alter the field as shown below:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_9_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_9_Demo.png)
 
 Click **Do Fit!** This will generate Nernstian curve waves for both experimental data and fits. To plot this data, go to:
 
@@ -432,13 +432,13 @@ Plot the waves Oxidation_PRef vs. EOx (Raw oxidation data), Oxidation_Fit_PFit v
 
 The resulting graph should look like this:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_10_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_10_Demo.png)
 
 The upper trace (colored blue in the figure) is the oxidation, and the lower trace (colored red) is the reduction of myoglobin.
 
 By formatting the raw data as dots and keeping the fit solid, a graph should be generated like this:
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/DemoPictures/Pic_11_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_11_Demo.png)
 
 From these traces, the redox potential of myoglobin can be determined. The multidimensional data has been successfully deconvoluted.
 
