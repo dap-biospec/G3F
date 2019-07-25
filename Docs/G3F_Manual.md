@@ -358,11 +358,11 @@ Download folder and save as a sibling folder of the G3F folder.
 
 Open Demo_G3F.pxp
 
-Experiment should load G3F code automatically. If G3F\_main.ipf cannot be found, IgorPro will present a dialog that will allow to navigate to the G3F folder.
+Experiment should load G3F code automatically. If G3F_main.ipf cannot be found, IgorPro will present a dialog that will allow the user to navigate to the G3F folder.
 
-Demo experiment will also load the SpecEchem\_4Spec\_ForOxd\_2.ipf procedure from the Demo folder with the example of user-supplied fitting function. 
+Demo experiment will also load the SpecEchem_4Spec_ForOxd_2.ipf procedure from the Demo folder with the example of user-supplied fitting function. 
 
-The main control panel should look like this:
+Open the main control panel, and type in the values for the global variables:
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_1_Demo.png)
 
