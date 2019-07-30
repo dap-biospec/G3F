@@ -1,4 +1,4 @@
-﻿This performance test allows the user to test user defined functions. Reference data is provided in the Control_Data folder.
+﻿This performance test allows the user to test written user functions. Reference data is provided in the Control_Data folder.
 
 **Loading Raw Data and Fitting Function**
 
