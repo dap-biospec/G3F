@@ -1,4 +1,3 @@
-
 ### **G3F API**
 
 **Introduction:** Most of G3F functionality is accomplished via G3F Control Panel GUI interface with the exception of user-supplied calculation functions. G3F supports multiple types of calculations, that may require the user two supply a calculation function that will comply with a particular template format. Such templates are listed at the beginning of this API document. Further explanation and examples can be found in the G3F Manual. G3F is thread-aware and requires the threadsafe keyword for user-supplied functions to be recognized. Template functions cannot be used directly. For development purposes, create a clone of the function without TPL suffix.
