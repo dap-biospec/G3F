@@ -22,7 +22,7 @@ Open the main control panel, and type in the values for the global variables:
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_1_Demo.png)
 
-The control panel should be set up for package testing.
+The control panel is now set up for package testing.
 
 ### **Direct Fitting**
 
