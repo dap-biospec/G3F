@@ -256,7 +256,7 @@ Now the fit can be run as in Examples 1 and 2.
 
 The global parameters displayed on the control panel correspond to the redox potentials and electron transfer coefficients of each mediator.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_2_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_21_Demo.PNG)
 
 As there are 2 mediators and myoglobin present, the data must be deconvoluted to isolate the spectrum and Nernstian profile of myoglobin. To do this, four local parameters are set (methylene green has two electron transfer steps), each corresponding to a spectrum specific to the analyte.
 
