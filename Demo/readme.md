@@ -56,7 +56,7 @@ Hold all variables (K0 through K5; K8 through K10) by checking the **Hold** fiel
 
 Since the spectra of the known mediators and the anlyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
 
 Paste this spectra into the Oxidation_RowLoc field.
 
@@ -146,7 +146,7 @@ Hold all variables (K0 through K5; K8 through K10) by checking the **Hold** fiel
 
 Since the spectra of the known mediators and the anlyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
 
 Paste this spectra into the Oxidation_RowLoc field.
 
@@ -270,7 +270,7 @@ Hold the mediator spectra row locals (K6 through K8) by checking the **Hold** fi
 
 Since the spectra of the known mediators and the analyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
 
 Paste this spectra into the Oxidation_RowLoc field.
 
