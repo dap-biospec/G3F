@@ -328,7 +328,7 @@ This procedure is a simple Lorentzian function for several isotopes with local v
 
 ### Demo Experiment
 
-To demonstrate the efficacy of G3F, an example NPSV experiment is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) This demo models the extraction of the redox profile of myoglobin with different spectra taken at different applied potentials. In addition to different applied potentials, different compositions of 2 different electrochemical mediators (methylene green, thioninie acetate) are present in this data. In order to analyze the redox profiles of myoglobin alone, the data must be deconvoluted. This analysis is demonstrated in three separate ways in order to familiarize the user with the flexibility of the G3F package in data analysis.
+To demonstrate the efficacy of G3F, an example NPSV experiment is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) This demo models the extraction of the redox profile of myoglobin with different spectra taken at different applied potentials. In addition to different applied potentials, different compositions of 2 different electrochemical mediators (methylene green, thioninie acetate) are present in this data. In order to analyze the redox profiles of myoglobin only, the data must be deconvoluted. This analysis is demonstrated in three separate ways in order to familiarize the user with the flexibility of the G3F package in data analysis.
 
 - [Example #1: Direct Fitting](#direct-fitting)
 - [Example #2: Process Fitting](#process-fitting)
@@ -350,7 +350,7 @@ Open the main control panel, and type in the values for the global variables:
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_1_Demo.png)
 
-The control panel is now set up for package testing.
+The control panel should be set up for package testing.
 
 ### **Direct Fitting**
 
@@ -386,9 +386,11 @@ Since the spectra of the known mediators and the anlyte will be calculated using
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
 
-Paste this spectra into the RowLoc field.
+Paste this spectra into the Oxidation_RowLoc field.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
+
+Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
 
 To perform the fit, click **Do Fit Now!** The program will run for a few minutes and generate the fitted data.
 
@@ -408,7 +410,7 @@ This fitted data set corresponds to each individual spectrum of each mediator an
 
 Windows ->New Graph…
 
-Select Oxidation\_RowLocal in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
+Select Oxidation\_RowLoc in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_7_Demo.png)
 
@@ -474,9 +476,11 @@ Since the spectra of the known mediators and the anlyte will be calculated using
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
 
-Paste this spectra into the RowLoc field.
+Paste this spectra into the Oxidation_RowLoc field.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
+
+Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
 
 To perform the fit, click **Do Fit Now!** The program will run for a few minutes and generate the fitted data.
 
@@ -496,7 +500,7 @@ This fitted data set corresponds to each individual spectrum of each mediator an
 
 Windows ->New Graph…
 
-Select Oxidation\_RowLocal in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
+Select Oxidation\_RowLoc in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_7_Demo.png)
 
@@ -534,6 +538,8 @@ In this example, the population of myoglobin will be calculated using local vari
 
 Go to the **Dataset** section on the control panel. Use the drop-down menu to select &quot;Oxidation.&quot; This loads the raw data matrix of oxidation data.
 
+**If continuing from Example #2, set the Process function drop-down box to "none"!**
+
 Go to the **Fit to function** drop-down menu. Select &quot;Loose\_SpecEChem\_4Spec\_ForOxd\_2D&quot; This function will calculate the populations of three of the analytes using global variables and fit the population of the fourth using local variables. In order for this to work, the setup for the fit on the control panel will need to be reconfigured.
 
 **Setup**
@@ -550,7 +556,7 @@ Go to the **Local Variables** tab. Go to the **Col(Z) Locals** field. Change the
 
 Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
 
-Click the **matrix constraints** button. Add in epsilon values as shown and uncheck any held global parameters.
+Click the **matrix constraints** button. **Uncheck all global variables**
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_14_Demo.PNG)
 
@@ -558,11 +564,19 @@ Click **Done**.
 
 Since three of the four analytes are known, their global variables can be treated as known quantities and must be held constant. To do this, go to the **Hold override** tab and check the **Global** box – this will hold all global variables constant.
 
+Go to the **Hold override** tab. Uncheck **Local COL**
+
 At the end of setup, the control panel should look like this:
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_15_Demo.PNG)
 
-Since G3F calculates local variables by treating data waves as vectors, reasonable guesses for locals must be given for the fit to work. To do this, first press the **Simulation** button. Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked.
+Since G3F calculates local variables by treating data waves as vectors, reasonable guesses for locals must be given for the fit to work. To do this, first press the **Simulate** button. A dialog box will appear:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_22_Demo.PNG)
+
+Click **No**.
+
+Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_16_Demo.PNG)
 
@@ -576,27 +590,23 @@ Now the fit can be run as in Examples 1 and 2.
 
 The global parameters displayed on the control panel correspond to the redox potentials and electron transfer coefficients of each mediator.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_2_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_21_Demo.PNG)
 
 As there are 2 mediators and myoglobin present, the data must be deconvoluted to isolate the spectrum and Nernstian profile of myoglobin. To do this, four local parameters are set (methylene green has two electron transfer steps), each corresponding to a spectrum specific to the analyte.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_3_Demo.png)
-
-In this experiment, all baselines are set to zero (Col(Z) Locals). These are not used in this simulation.
-
-Next, holds must be set on known parameters. In this case, the global parameters are already held, but mediator spectra are not.
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_20_Demo.PNG)
 
 Go to the **Matrix Constraints** button.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_4_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_19_Demo.PNG)
 
-Hold all mediator spectra (K6 through K8) by checking the **Hold** field. These correspond to the reference spectra of mediators, all of which are known. When finished, press **Done**.
+Hold the mediator spectra row locals (K6 through K8) by checking the **Hold** field. When finished, press **Done**.
 
-Since the spectra of the known mediators and the anlyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
+Since the spectra of the known mediators and the analyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
 
-Paste this spectra into the RowLoc field.
+Paste this spectra into the Oxidation_RowLoc field.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
 
@@ -618,7 +628,7 @@ This fitted data set corresponds to each individual spectrum of each mediator an
 
 Windows ->New Graph…
 
-Select Oxidation\_RowLocal in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
+Select Oxidation\_RowLoc in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_7_Demo.png)
 
@@ -647,3 +657,4 @@ By formatting the raw data as dots and keeping the fit solid, a graph should be 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_11_Demo.png)
 
 From these traces, the redox potential of myoglobin can be determined. The multidimensional data has been successfully deconvoluted as in Example 1 and Example 2.
+
