@@ -264,7 +264,7 @@ As there are 2 mediators and myoglobin present, the data must be deconvoluted to
 
 Go to the **Matrix Constraints** button.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_4_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_19_Demo.PNG)
 
 Hold the mediator spectra row locals (K6 through K8) by checking the **Hold** field. When finished, press **Done**.
 
