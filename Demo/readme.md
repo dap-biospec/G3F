@@ -242,7 +242,13 @@ At the end of setup, the control panel should look like this:
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_15_Demo.PNG)
 
-Since G3F calculates local variables by treating data waves as vectors, reasonable guesses for locals must be given for the fit to work. To do this, first press the **Simulate** button. Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked.
+Since G3F calculates local variables by treating data waves as vectors, reasonable guesses for locals must be given for the fit to work. To do this, first press the **Simulate** button. A dialog box will appear:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_22_Demo.PNG)
+
+Click **No**.
+
+Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_16_Demo.PNG)
 
