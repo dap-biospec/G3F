@@ -260,7 +260,7 @@ The global parameters displayed on the control panel correspond to the redox pot
 
 As there are 2 mediators and myoglobin present, the data must be deconvoluted to isolate the spectrum and Nernstian profile of myoglobin. To do this, four local parameters are set (methylene green has two electron transfer steps), each corresponding to a spectrum specific to the analyte.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_3_Demo.png)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_20_Demo.PNG)
 
 Go to the **Matrix Constraints** button.
 
