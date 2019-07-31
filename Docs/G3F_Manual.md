@@ -550,7 +550,7 @@ Go to the **Local Variables** tab. Go to the **Col(Z) Locals** field. Change the
 
 Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
 
-Click the **matrix constraints** button. Add in epsilon values as shown.
+Click the **matrix constraints** button. Add in epsilon values as shown and uncheck any held global parameters.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_14_Demo.PNG)
 
@@ -584,13 +584,13 @@ As there are 2 mediators and myoglobin present, the data must be deconvoluted to
 
 In this experiment, all baselines are set to zero (Col(Z) Locals). These are not used in this simulation.
 
-Next, holds must be set on known parameters. The electron transfer coefficients correspond to the number of electrons transferred per mediator and are known.
+Next, holds must be set on known parameters. In this case, the global parameters are already held, but mediator spectra are not.
 
 Go to the **Matrix Constraints** button.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_4_Demo.png)
 
-Hold all variables (K0 through K5; K8 through K10) by checking the **Hold** field. These correspond to the electron transfer coefficients and redox potentials of the mediators – all of which are known. The last two fields correspond to the electron transfer coefficient and redox potential of myoglobin. When finished, press **Done**.
+Hold all mediator spectra (K6 through K8) by checking the **Hold** field. These correspond to the reference spectra of mediators, all of which are known. When finished, press **Done**.
 
 Since the spectra of the known mediators and the anlyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
 
