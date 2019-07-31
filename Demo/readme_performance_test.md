@@ -30,6 +30,8 @@ Paste this spectra into the RowLoc field.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
 
+Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
+
 To perform the fit, click **Do Fit Now!** The program will run for a few minutes and generate the fitted data.
 
 **Performance Comparison**
