@@ -1,6 +1,6 @@
 ### Demo Experiment
 
-To demonstrate the efficacy of G3F, an example NPSV experiment is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) This demo models the extraction of the redox profile of myoglobin with different spectra taken at different applied potentials. In addition to different applied potentials, different compositions of 2 different electrochemical mediators (methylene green, thioninie acetate) are present in this data. In order to analyze the redox profiles of myoglobin alone, the data must be deconvoluted. This analysis is demonstrated in three separate ways in order to familiarize the user with the flexibility of the G3F package in data analysis.
+To demonstrate the efficacy of G3F, an example NPSV experiment is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) This demo models the extraction of the redox profile of myoglobin with different spectra taken at different applied potentials. In addition to different applied potentials, different compositions of 2 different electrochemical mediators (methylene green, thioninie acetate) are present in this data. In order to analyze the redox profiles of myoglobin only, the data must be deconvoluted. This analysis is demonstrated in three separate ways in order to familiarize the user with the flexibility of the G3F package in data analysis.
 
 - [Example #1: Direct Fitting](#direct-fitting)
 - [Example #2: Process Fitting](#process-fitting)
