@@ -20,7 +20,15 @@ Go to the **Matrix Constraints** button.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_4_Demo.png)
 
-Hold all variables (K0 through K5) by checking the **Hold** field. When finished, press **Done**.
+Hold all variables (K0 through K5; K8 through K10) by checking the **Hold** field. These correspond to the electron transfer coefficients and redox potentials of the mediators – all of which are known. The last two fields correspond to the electron transfer coefficient and redox potential of myoglobin. When finished, press **Done**.
+
+Since the spectra of the known mediators and the anlyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
+
+Paste this spectra into the RowLoc field.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
 
 To perform the fit, click **Do Fit Now!** The program will run for a few minutes and generate the fitted data.
 
