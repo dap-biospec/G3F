@@ -11,7 +11,7 @@
 // You should have received a copy of the GNU General Public License along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma rtGlobals=1		// Use modern global access method.
-#pragma version =  20190710
+#pragma version =  20190812
 #pragma IndependentModule = G3F
 
 
@@ -1015,7 +1015,7 @@ Function G3FitFunc_2D_Struct(s)
 //		print "\r\n X:"+nameofwave(s.fData.X.fitClbW)+" ["+num2str(s.fData.X.fitClbW[0])+" - "+num2str(s.fData.X.fitClbW[dimsize(s.fData.X.fitClbW,0)-1])+"] "+num2str(dimsize(s.fData.X.fitClbW, 0))
 	Execute preCMD +fitCMD+ numCMD + strCMD+")"
 	if (strlen(s.UserCorrFunc))
-		Execute preCMD +fitCMD+ numCMD + strCMD+")"
+		Execute preCMD +corrCMD+ numCMD + strCMD+")"
 	endif 
 
 	variable currTime = stopMSTimer(timerID);
@@ -1030,9 +1030,6 @@ Function G2SimFunc_2D_Struct(s)
 	STRUCT chunkDataT &s;
 	
 	variable timerID = startMSTimer
-	
-	//Variable  i
-
 
 	// Log fit params
 	if (s.logCount >= 0)
@@ -1044,7 +1041,15 @@ Function G2SimFunc_2D_Struct(s)
 		s.logCount += 1
 	endif
 
-	string AddtlDataStr  ="\""+GetWavesDataFolder(s.AddtlDataW,4)+"\", \""+GetWavesDataFolder(s.CXZRefW,4)+"\" ";
+	string AddtlDataStr  = "\"";
+	if (waveexists(s.AddtlDataW))
+		AddtlDataStr  +=GetWavesDataFolder(s.AddtlDataW,4);
+	endif 
+	AddtlDataStr +="\", \"";
+	if (waveexists(s.CXZRefW))
+		AddtlDataStr +=GetWavesDataFolder(s.CXZRefW,4)
+	endif 
+	AddtlDataStr +="\" ";
 	string DbgStr  =""+num2str(s.DbgKeep)+", "+num2str(s.DbgSave)+" ";
 
 	if (s.ProcessReuse) 
@@ -1057,6 +1062,7 @@ Function G2SimFunc_2D_Struct(s)
 		endfor
 	endif
 
+	// first, perform simulation or generate process wave by other means
 	string preCMD, postCMD
 	variable procThreads;
 	if (!s.ProcessReuse)	
@@ -1068,54 +1074,79 @@ Function G2SimFunc_2D_Struct(s)
 			else
 				procThreads = 1;
 			endif 
-			preCMD =  "ProcGlobal#G3F_Process_MT_Proxy("+num2str(procThreads)+",\""+GetWavesDataFolder(s.fVars.Glob.linW, 4)+"\", "+GetWavesDataFolder(s.fVars.Glob.linW, 4)+", "+GetWavesDataFolder(s.ProcW, 4)+", "+GetWavesDataFolder(s.CClbW, 4)+", "+AddtlDataStr+")"
+			preCMD =  "ProcGlobal#G3F_Process_MT_Proxy("+num2str(procThreads)+",\""+s.UserSimFunc+"\", "+GetWavesDataFolder(s.fVars.Glob.linW, 4)+", "+GetWavesDataFolder(s.ProcW, 4)+", "+GetWavesDataFolder(s.CClbW, 4)+", "+AddtlDataStr+")"
 		endif
 		execute preCMD
 	endif
 	
 
-		string preFitCmd, numCMD, strCMD, fitCMD, corrCMD
-		preFitCMD= "ProcGlobal#G3F_ProcLocal_MT_Proxy("
-		
-		fitCMD =  " \""+s.UserFitFunc+"\", "+num2str(s.mainOptions)+", "
+	// now fir the data using process wave generated above
+	string preFitCmd, numCMD, strCMD, fitCMD, corrCMD
+	preFitCMD= "ProcGlobal#G3F_ProcLocal_MT_Proxy("
+	
+	fitCMD =  " \""+s.UserFitFunc+"\", "+num2str(s.mainOptions)+", "
 
-		numCMD = num2str(s.useThreads)+", "
-		numCMD += num2str(s.rows)+", "
-		numCMD += num2str(s.fData.X.fitLines)+", "
-		numCMD += num2str(s.fData.Z.fitLines)+", "
-		numCMD += num2str(s.fVars.Row.linOffset)+",  "//RowWaveOffset
-		numCMD += num2str(s.fVars.Col.linOffset)+",  " //ColWaveOffset
-		numCMD += num2str(s.fVars.Row.nVars)+",  "
-		numCMD += num2str(s.fVars.Col.nVars)+",  "
-		
-		strCMD  = GetWavesDataFolder(s.fData.ColNumWave,4)+", "
-		strCMD += GetWavesDataFolder(s.yw, 4)+", "
-		strCMD += GetWavesDataFolder(s.fData.X.fitClbW, 4)+", "  // not s.xw
-		strCMD += GetWavesDataFolder(s.fData.Z.fitClbW, 4)+", " //s.inzw
-		strCMD += GetWavesDataFolder(s.fVars.Glob.linW, 4)+", " //GlobParWName
-		strCMD += GetWavesDataFolder(s.fVars.Row.linW, 4)+", " //RowParWName
-		strCMD += GetWavesDataFolder(s.fVars.Col.linW, 4)+" , " //ColParWName
-		strCMD += AddtlDataStr+", "
-		strCMD += DbgStr+", "
-		strCMD += GetWavesDataFolder(s.ProcW, 4)
+	numCMD = num2str(s.useThreads)+", "
+	numCMD += num2str(s.rows)+", "
+	numCMD += num2str(s.fData.X.fitLines)+", "
+	numCMD += num2str(s.fData.Z.fitLines)+", "
+	numCMD += num2str(s.fData.L.fitLines)+", "
+	
+	numCMD += num2str(s.fVars.Row.linOffset)+",  "//RowWaveOffset
+	numCMD += num2str(s.fVars.Col.linOffset)+",  " //ColWaveOffset
+	numCMD += num2str(s.fVars.Lay.linOffset)+",  " //LayWaveOffset
+	numCMD += num2str(s.fVars.LayRow.linOffset)+",  " //LayRowWaveOffset
+	numCMD += num2str(s.fVars.LayCol.linOffset)+",  " //LayColWaveOffset
 
-		
-		Execute preCMD +fitCMD+ numCMD + strCMD+", "+GetWavesDataFolder(s.ProcW,4) +")"
-		if (strlen(s.UserCorrFunc))
-			corrCMD = " \""+s.UserCorrFunc+"\", "+num2str(s.corrOptions)+", "
-			string preCorrCMD, postCorrCMD
-			if (s.CorrNoSim)
-				preCorrCMD = "ProcGlobal#G3F_Direct_MT_Proxy("
-				postCorrCMD = "";
-				print "call G3F_Direct_MT_Proxy (opt 1)"
-				Execute preCorrCMD +fitCMD+ numCMD + strCMD+")"
-			else
-				preCorrCMD = "ProcGlobal#G3F_ProcLocal_MT_Proxy("
-				postCorrCMD = ", "+GetWavesDataFolder(s.ProcW,4);
-				print "call G3F_ProcLocal_MT_Proxy (opt 2)"
-			endif
-			Execute preCorrCMD +fitCMD+ numCMD + strCMD + postCorrCMD+")"
-		endif 
+	numCMD += num2str(s.fVars.Row.nVars)+",  "
+	numCMD += num2str(s.fVars.Col.nVars)+",  "
+	numCMD += num2str(s.fVars.Lay.nVars)+",  "
+	numCMD += num2str(s.fVars.LayRow.nVars)+",  "
+	numCMD += num2str(s.fVars.LayCol.nVars)+",  "
+	
+	strCMD  = GetWavesDataFolder(s.fData.ColNumWave,4)+", "
+	strCMD += GetWavesDataFolder(s.yw, 4)+", "
+
+	strCMD += GetWavesDataFolder(s.fData.X.fitClbW, 4)+", "  // not s.xw
+	strCMD += GetWavesDataFolder(s.fData.Z.fitClbW, 4)+", " //s.inzw
+	if (waveexists(s.fData.L.fitClbW))
+		strCMD += GetWavesDataFolder(s.fData.L.fitClbW, 4)+", " //s.inlw
+	else
+		strCMD +="$\"\", "
+	endif
+
+	strCMD += GetWavesDataFolder(s.fVars.Glob.linW, 4)+", " //GlobParWName
+	strCMD += GetWavesDataFolder(s.fVars.Row.linW, 4)+", " //RowParWName
+	strCMD += GetWavesDataFolder(s.fVars.Col.linW, 4)+" , " //ColParWName
+	if (waveexists(s.fVars.Lay.linW))
+		strCMD += GetWavesDataFolder(s.fVars.Lay.linW, 4)+", " //LayParWName
+		strCMD += GetWavesDataFolder(s.fVars.LayRow.linW, 4)+", " //LayRowParWName
+		strCMD += GetWavesDataFolder(s.fVars.LayCol.linW, 4)+", " //LayColParWName
+	else
+		strCMD +="$\"\", $\"\", $\"\", "
+	endif 
+	
+	strCMD += AddtlDataStr+", "
+	strCMD += GetWavesDataFolder(s.ProcW, 4)+", "
+	strCMD += DbgStr
+	
+	string fullFitCmd = preFitCMD +fitCMD+ numCMD + strCMD + ")"
+	Execute fullFitCmd
+	if (strlen(s.UserCorrFunc))
+		corrCMD = " \""+s.UserCorrFunc+"\", "+num2str(s.corrOptions)+", "
+		string preCorrCMD, postCorrCMD
+		if (s.CorrNoSim)
+			preCorrCMD = "ProcGlobal#G3F_Direct_MT_Proxy("
+			postCorrCMD = "";
+			print "call G3F_Direct_MT_Proxy (opt 1)"
+			Execute preCorrCMD +corrCMD+ numCMD + strCMD+")"
+		else
+			preCorrCMD = "ProcGlobal#G3F_ProcLocal_MT_Proxy("
+			postCorrCMD = ", "+GetWavesDataFolder(s.ProcW,4);
+			print "call G3F_ProcLocal_MT_Proxy (opt 2)"
+		endif
+		Execute preCorrCMD +corrCMD+ numCMD + strCMD + postCorrCMD+")"
+	endif 
 
 
 	variable currTime = stopMSTimer(timerID);

@@ -13,7 +13,7 @@
 
 #pragma rtGlobals=1		// Use modern global access method.
 #pragma IgorVersion=8.0
-#pragma version =  20190710
+#pragma version =  20190812
 
 #include  ":G3F_Setup", version>= 20190710
 #include  ":G3F_Constraints", version>=20190710
@@ -21,7 +21,7 @@
 #include  ":G3F_List&Set", version>= 20190710
 #include  ":G3F_Auxillary", version>= 20190710
 #include  ":G3F_Struct", version>= 20190710
-#include  ":G3F_FitFlow", version>= 20190710
+#include  ":G3F_FitFlow", version>= 20190812
 #include  ":G3F_DoTheFit", version>= 20190710
 #include  ":G3F_Feedback", version>=20190710
 #include  ":G3F_Desktop", version>=20190710
