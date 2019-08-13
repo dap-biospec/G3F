@@ -64,9 +64,11 @@ The main control panel of the G3F macro is split into several different sections
 
 **Reference Data:**
 
-This section is composed of additional data needed for fitting calculations. This is an optional feature for fitting.
+This section is composed of additional data that may be supplied for fitting calculations. This can be any arbitrary data and its interpretation is entirely up to the user and the specfic needs of the model. It is important to note that including any reference data changes the process (if used), fitting, and post-processing template function. For example, in direct calculation method G3F_Direct_1D_TPL template function will be changed to G3F_Direct_Ep_1D_TPL when reference data are included.
 
-- Global reference data: optional numeric wave passed to process, fitting, and post-processing functions
+- Global reference data: optional numeric wave passed to process, fitting, and post-processing functions. Selected wave can be of any dimension, including zero. An example of this type of data would be tables of thermodynamic constants.
+
+- Column and row reference data: their row dimensions must match the row/column dimensions of the fitted data set. Examples of this kind of data are: reference spectra, and redox response profiles. A Global reference data wave (possibly of zero size) must be supplied to enable local reference data option.
 
 **Method:**
 
@@ -80,7 +82,7 @@ Once the process is generated, it is passed to the fitting function that perform
 - Last Process:
   - Fit to function: This is the fitting function that is being used for 3DF fit. This function defines the global variables and local variables used in the fit.
 
-- Post-processing: Post-processing functions can perform additional processing after all fittings have been performed. These functions must be supplied by the user.
+- Post-processing: this optional, user-supplied function can perform any additional processing of the fitted results. Examples include combining fitting results, integration of spectral data, calculation of ratios, etc. This function is executed once after the fitting or simulation is complete without an error.
 
 **Dataset:**
 
@@ -193,7 +195,7 @@ This section allows the user to override specific holds for each dimension, glob
 
 **Autocycle Hold:**
 
-This section allows the user to hold variables after a predetermined number of automatic cycles.
+For particularly complex fitting models, the global regression may not converge unless certain variables are alternately held and unheld during fitting. This also can prevent NAN and singular matrix errors. This section allows the user to alternate fitting of only individual subsets of variables (global, column, row etc) while all others are held. This feature is especially helpful if intial guesses are far from optimal. Generally, provided with a sufficient number of iterations, auto-cycling will converge to the same result with higher robustness at the expense of increased computational time. 
 
 - cycles: Sets the number of automatic cycles to be performed using one of combinations detailed below.
 - Global – Row – Col: Alternate analysis of one group at a time between Global, Row local and Column local variables.
@@ -328,11 +330,13 @@ This procedure is a simple Lorentzian function for several isotopes with local v
 
 ### Demo Experiment
 
-To demonstrate the efficacy of G3F, an example NPSV experiment is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) This demo models the extraction of the redox profile of myoglobin with different spectra taken at different applied potentials. In addition to different applied potentials, different compositions of 2 different electrochemical mediators (methylene green, thioninie acetate) are present in this data. In order to analyze the redox profiles of myoglobin only, the data must be deconvoluted. This analysis is demonstrated in three separate ways in order to familiarize the user with the flexibility of the G3F package in data analysis.
+To demonstrate the efficacy of G3F, an example normal-pulse staircase voltammetry (NPSV) experiment determining the redox potential of myoglobin is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) The redox potential is key to understanding the behavior of molecules, and in this example a redox-active protein. As the active site is typically buried deep within the protein, electrochemical experiments are often conducted in the presence of mediators. For further information on this example, see (https://pubs.acs.org/doi/10.1021/acs.analchem.9b00859). This demo exemplifies the analysis of the vibrational (FTIR) redox response of myoglobin from spectra taken at different applied potentials. Myoglobin and each mediator (methylene green, thioninie acetate),  present in the medium, possess their own vibrational spectra and redox potentials. In order to interpret the redox and vibrational signatures of myoglobin only, the data must be deconvoluted. Three separate methods of analysis are demonstrated here in order to familiarize the user with the flexibility of the G3F data analysis.
 
 - [Example #1: Direct Fitting](#direct-fitting)
 - [Example #2: Process Fitting](#process-fitting)
 - [Example #3: Calculating Fits Using Local Variables](#calculating-fits-using-local-variables)
+
+The dataset provided here consists of global and local variables, as detailed in the manual. Each experimental spectrum is contributed by multiple species. In addition, it includes experimental error, which is described by a polynomial baseline.  In the examples 1 and 2, terms of the polynomial are fitted as the column local variables. Please note that the fifth order polynomial, shown in this demo, is not necessary for all datasets; this can be modified or substituted to match the needs of the particular quantitative model. In this demo, vibrational spectra are described by the row local variables (row locals), with each column of the row local wave corresponding to a vibrational spectrum of one species. Known parameters (i.e. the number of electrons and the redox potentials of the mediators) are represented by global variables.
 
 **Installing and Opening:**
 
@@ -354,7 +358,7 @@ The control panel should be set up for package testing.
 
 ### **Direct Fitting**
 
-In this example, the data will be fitted directly using a fitting function and global variables for known parameters of analytes (ie: standard reduction potentials, number of electrons transferred). Individual spectra corresponding to each analyte and the Nernstian profile of myoglobin are calculated using local variables.
+In this example, the data will be fitted directly using a fitting function and global variables for known parameters of analytes (ie: standard reduction potentials, number of electrons transferred). Individual spectra corresponding to each analyte of myoglobin are calculated using local variables, while its Nernstian profile is calculated from global variables and column calibration wave (the applied potential). As detailed above, the experimental error is described by a polynomial baseline calculated from fitted column local variables.
 
 **Loading Raw Data and Fitting Function**
 
@@ -532,7 +536,7 @@ From these traces, the redox potential of myoglobin can be determined. The multi
 
 ### **Calculating Fits using Local Variables**
 
-In this example, the population of myoglobin will be calculated using local variables. All mediators in this calculation will be treated as known and will be modeled using global variables; the population of myoglobin will be calculated as a local variable. Individual spectra corresponding to each analyte and the Nernstian profile of myoglobin are calculated using local variables.
+In this example, the population of myoglobin will be described by an extra column local parameter, in addition to the polynomial baseline. This equivalent to calculating population form global parameters and the calibration used in the first method, but demonstrates the modeling of phenomena with unknown process waveforms. All mediators in this calculation will be treated as known spectra and will be modeled using global variables.
 
 **Loading Raw Data and Fitting Function**
 
