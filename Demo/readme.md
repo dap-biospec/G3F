@@ -1,10 +1,12 @@
 ### Demo Experiment
 
-To demonstrate the efficacy of G3F, an example NPSV experiment is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) This demo models the extraction of the redox profile of myoglobin with different spectra taken at different applied potentials. In addition to different applied potentials, different compositions of 2 different electrochemical mediators (methylene green, thioninie acetate) are present in this data. In order to analyze the redox profiles of myoglobin only, the data must be deconvoluted. This analysis is demonstrated in three separate ways in order to familiarize the user with the flexibility of the G3F package in data analysis.
+To demonstrate the efficacy of G3F, an example normal-pulse staircase voltammetry (NPSV) experiment determining the redox potential of myoglobin is provided with the G3F package.  [Demo Experiment](https://github.com/dap-biospec/G3F/tree/master/Demo) The redox potential is key to understanding the behavior of molecules, and in this example a redox-active protein. As the active site is typically buried deep within the protein, electrochemical experiments are often conducted in the presence of mediators. For further information on this example, see (https://pubs.acs.org/doi/10.1021/acs.analchem.9b00859). This demo exemplifies the analysis of the vibrational (FTIR) redox response of myoglobin from spectra taken at different applied potentials. Myoglobin and each mediator (methylene green, thioninie acetate),  present in the medium, possess their own vibrational spectra and redox potentials. In order to interpret the redox and vibrational signatures of myoglobin only, the data must be deconvoluted. Three separate methods of analysis are demonstrated here in order to familiarize the user with the flexibility of the G3F data analysis.
 
 - [Example #1: Direct Fitting](#direct-fitting)
 - [Example #2: Process Fitting](#process-fitting)
 - [Example #3: Calculating Fits Using Local Variables](#calculating-fits-using-local-variables)
+
+The dataset provided here consists of global and local variables, as detailed in the manual. Each experimental spectrum is contributed by multiple species. In addition, it includes experimental error, which is described by a polynomial baseline.  In the examples 1 and 2, terms of the polynomial are fitted as the column local variables. Please note that the fifth order polynomial, shown in this demo, is not necessary for all datasets; this can be modified or substituted to match the needs of the particular quantitative model. In this demo, vibrational spectra are described by the row local variables (row locals), with each column of the row local wave corresponding to a vibrational spectrum of one species. Known parameters (i.e. the number of electrons and the redox potentials of the mediators) are represented by global variables.
 
 **Installing and Opening:**
 
@@ -26,7 +28,7 @@ The control panel should be set up for package testing.
 
 ### **Direct Fitting**
 
-In this example, the data will be fitted directly using a fitting function and global variables for known parameters of analytes (ie: standard reduction potentials, number of electrons transferred). Individual spectra corresponding to each analyte and the Nernstian profile of myoglobin are calculated using local variables.
+In this example, the data will be fitted directly using a fitting function and global variables for known parameters of analytes (ie: standard reduction potentials, number of electrons transferred). Individual spectra corresponding to each analyte of myoglobin are calculated using local variables, while its Nernstian profile is calculated from global variables and column calibration wave (the applied potential). As detailed above, the experimental error is described by a polynomial baseline calculated from fitted column local variables.
 
 **Loading Raw Data and Fitting Function**
 
@@ -204,7 +206,7 @@ From these traces, the redox potential of myoglobin can be determined. The multi
 
 ### **Calculating Fits using Local Variables**
 
-In this example, the population of myoglobin will be calculated using local variables. All mediators in this calculation will be treated as known and will be modeled using global variables; the population of myoglobin will be calculated as a local variable. Individual spectra corresponding to each analyte and the Nernstian profile of myoglobin are calculated using local variables.
+In this example, the population of myoglobin will be described by an extra column local parameter, in addition to the polynomial baseline. This equivalent to calculating population form global parameters and the calibration used in the first method, but demonstrates the modeling of phenomena with unknown process waveforms. All mediators in this calculation will be treated as known spectra and will be modeled using global variables.
 
 **Loading Raw Data and Fitting Function**
 
