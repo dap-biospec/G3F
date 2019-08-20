@@ -348,13 +348,27 @@ Go to the **Fit to function** drop-down menu. Select &quot;SpecEChem\_4Spec\_4Sp
 
 **Setup**
 
+Go to the **Global Variables** tab. Change the number on the dropdown menu (&quot; **Fitted**&quot;) to **8**. This is the number of global variables we will fit – in this case, the standard reduction potential and number of electrons transferred- of the mediators in the mixture. Click **Set**. A dialogue box will then appear:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_12_Demo.PNG)
+
+Click **No**. This will adjust the number of fitted global variables without requiring the user to input guesses.
+
+Go to the **Local Variables** tab. Go to the **Col(Z) Locals** field. Change the number on the dropdown menu to **6**. This is a necessary adjustment which will allow for the calculation of the population of myoglobin using local variables.
+
 Go to the **matrix constraints** button. In this interface, hold variables K0 through K5 and K8 through K11 as shown.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_23_Demo.JPG)
 
 Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
 
-Press the **Simulate** button to ensure that there is no mismatch in dimension. If the simulation succeeds, the fit can be run as in Examples 1 and 2.
+Press the **Simulate** button to ensure that there is no mismatch in dimension. A dialog box will appear:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_22_Demo.PNG)
+
+Click **No**.
+
+If the simulation succeeds, the fit can be run as in Examples 1 and 2.
 
 **Running the Fit:**
 
