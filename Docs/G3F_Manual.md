@@ -335,8 +335,10 @@ To demonstrate the efficacy of G3F, an example normal-pulse staircase voltammetr
 - [Example #1: Direct Fitting](#direct-fitting)
 - [Example #2: Process Fitting](#process-fitting)
 - [Example #3: Calculating Fits Using Local Variables](#calculating-fits-using-local-variables)
+- [Example #4: Calculating Fits Using Reference Data](#calculating-fits-using-reference-data)
+- [Example #5: Calculating Fits Using Post Processing Methods](#calculating-fits-using-post-processing-methods)
 
-The dataset provided here consists of global and local variables, as detailed in the manual. Each experimental spectrum is contributed by multiple species. In addition, it includes experimental error, which is described by a polynomial baseline.  In the examples 1 and 2, terms of the polynomial are fitted as the column local variables. Please note that the fifth order polynomial, shown in this demo, is not necessary for all datasets; this can be modified or substituted to match the needs of the particular quantitative model. In this demo, vibrational spectra are described by the row local variables (row locals), with each column of the row local wave corresponding to a vibrational spectrum of one species. Known parameters (i.e. the number of electrons and the redox potentials of the mediators) are represented by global variables.
+The dataset provided here consists of global and local variables, as detailed in the manual. Each experimental spectrum is contributed by multiple species. In addition, it includes experimental error, which is described by a polynomial baseline.  In the examples 1 and 2, terms of the polynomial are fitted as the column local variables. Please note that the fifth order polynomial, shown in this demo, is not necessary for all datasets; this can be modified or substituted to match the needs of the particular quantitative model. In this demo, vibrational spectra are described by the row local variables (row locals), with each column of the row local wave corresponding to a vibrational spectrum of one species. Known parameters (i.e. the number of electrons and the redox potentials of the mediators) are represented by global variables. In Example 4, known parameters (i.e. i.e. the number of electrons and the redox potentials of species) are supplied using reference data in order to generate thermodynamic properties of all species in the final fit.
 
 **Installing and Opening:**
 
@@ -661,4 +663,226 @@ By formatting the raw data as dots and keeping the fit solid, a graph should be 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_11_Demo.png)
 
 From these traces, the redox potential of myoglobin can be determined. The multidimensional data has been successfully deconvoluted as in Example 1 and Example 2.
+
+### **Calculating Fits Using Reference Data**
+
+In this example, the data will be fitted using a reference global and row data (ExtraGlobal and ExtraRow waves respectively). The spectrum and population of myoglobin (Species D) are fitted in this example, with mediator (methylene green, thioninie acetate) spectra supplied using the ExtraRow wave. This approach is intended to allow the user to implement known references in quantitative models.
+
+**Loading Raw Data and Fitting Function**
+
+Go to the **Reference Data** section. Under **Global**, use the drop-down menu to select &quot;ExtraGlobal&quot; This loads the global reference data (here, the redox potentials and electron transfer number of methylene green and thionine acetate). To load the mediator spectra reference, go to the dropdown menu **X(Row)** and select ExtraRow; this is the vibrational spectra for each compound.
+
+Go to the **Dataset** section on the control panel. Use the drop-down menu to select &quot;Oxidation.&quot; This loads the raw data matrix of oxidation data.
+
+Go to the **Fit to function** drop-down menu. Select &quot;SpecEChem\_4Spec\_4Spec\_ForOxd\_2D\_Extra&quot; This function will calculate the populations of three of the analytes using reference data and fit the population of the fourth using local and given global variables. In order for this to work, the setup for the fit on the control panel will need to be reconfigured to ensure that the reference data is held constant during the fit.
+
+**Setup**
+
+Go to the **matrix constraints** button. In this interface, hold variables K0 through K5 and K8 through K11 as shown.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_23_Demo.JPG)
+
+Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
+
+Press the **Simulate** button to ensure that there is no mismatch in dimension. If the simulation succeeds, the fit can be run as in Examples 1 and 2.
+
+**Running the Fit:**
+
+The global parameters displayed on the control panel correspond to the redox potentials and electron transfer coefficients of each mediator.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_21_Demo.PNG)
+
+As there are 2 mediators and myoglobin present, the data must be deconvoluted to isolate the spectrum and Nernstian profile of myoglobin. To do this, four local parameters are set (methylene green has two electron transfer steps), each corresponding to a spectrum specific to the analyte.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_20_Demo.PNG)
+
+To perform the fit, click **Do Fit Now!** The program will run for a few minutes and generate the fitted data.
+
+**Data Extraction and Plotting**
+
+Now that the simulation has been performed, the separate spectra can be plotted and compared.
+
+Go to the Data Browser field and select Oxidation\_RowLoc
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_5_Demo.png)
+
+Clicking on this brings up a set of data:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
+
+This fitted data set corresponds to each individual spectrum of each mediator and myoglobin. To plot this data for easy comparison, go to
+
+Windows ->New Graph…
+
+Select Oxidation\_RowLoc in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_7_Demo.png)
+
+Click **Do It.**  This should generate a plot of each individual mediator and myoglobin:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_8_Demo.png)
+
+To extract the Nernstian profiles, go to the **Feedback positions** field on the main control panel. Alter the field as shown below:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_9_Demo.png)
+
+Click **Do Fit!** This will generate Nernstian curve waves for both experimental data and fits. To plot this data, go to:
+
+Windows -> New Graph…
+
+Plot the waves Oxidation_PRef vs. EOx (Raw oxidation data), Oxidation_Fit_PFit vs. EOx_Fit (fitted oxidation data), Reduction_PRef vs. ERd (Raw reduction data), and Reduction_Fit_PFit vs. ERd_Fit (fitted reduction data).
+
+The resulting graph should look like this:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_10_Demo.png)
+
+The upper trace (colored blue in the figure) is the oxidation, and the lower trace (colored red) is the reduction of myoglobin.
+
+By formatting the raw data as dots and keeping the fit solid, a graph should be generated like this:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_11_Demo.png)
+
+From these traces, the redox potential of myoglobin can be determined. The multidimensional data has been successfully deconvoluted as in Example 1 and Example 2.
+
+### **Calculating Fits Using Post Processing Methods**
+
+As stated in the manual, post-processing is an optional, user-supplied function which can perform any additional required processing of the fitted results. Examples include combining fitting results, integration of spectral data, calculation of ratios, etc. This function is executed once after the fitting or simulation is complete without an error. In this example, a "loose" population of myoglobin is generated by the fitting function. This "loose" population profile is then passed to a user-defined Nernstenian function which calculates the thermodynamic properties of myoglobin by fitting the loose spectrum.
+
+In this example, the population of myoglobin will be described by an extra column local parameter, in addition to the polynomial baseline. This equivalent to calculating population form global parameters and the calibration used in the first method, but demonstrates the modeling of phenomena with unknown process waveforms. All mediators in this calculation will be treated as known spectra and will be modeled using global variables.
+
+**Loading Raw Data and Fitting Function**
+
+Go to the **Dataset** section on the control panel. Use the drop-down menu to select &quot;Oxidation.&quot; This loads the raw data matrix of oxidation data.
+
+**If continuing from Example #2, set the Process function drop-down box to "none"!**
+
+Go to the **Fit to function** drop-down menu. Select &quot;Loose\_SpecEChem\_4Spec\_ForOxd\_2D&quot; This function will calculate the populations of three of the analytes using global variables and fit the population of the fourth using local variables. In order for this to work, the setup for the fit on the control panel will need to be reconfigured.
+
+Go to the **Post-processing** drop-down menu. Select &quot;Loose\_SpecEChem\_4Spec\_ForOxd\_2D\_Post&quot; This function calculates the thermodynamic properties of myoglobin following the generation of the loose spectrum of the initial fit.
+
+**Setup**
+
+Go to the **Global Variables** tab. Change the number on the dropdown menu (&quot; **Fitted**&quot;) to **6**. This is the number of global variables we will fit – in this case, the standard reduction potential and number of electrons transferred- of the mediators in the mixture. Click **Set**. A dialogue box will then appear:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_12_Demo.PNG)
+
+Click **No**. This will adjust the number of fitted global variables without requiring the user to input guesses.
+
+Go to the **Local Variables** tab. Go to the **Col(Z) Locals** field. Change the number on the dropdown menu to **7**. This is a necessary adjustment which will allow for the calculation of the population of myoglobin using local variables.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_13_Demo.PNG)
+
+Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
+
+Click the **matrix constraints** button. **Uncheck all global variables**
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_14_Demo.PNG)
+
+Click **Done**.
+
+Since three of the four analytes are known, their global variables can be treated as known quantities and must be held constant. To do this, go to the **Hold override** tab and check the **Global** box – this will hold all global variables constant.
+
+Go to the **Hold override** tab. Uncheck **Local COL**
+
+At the end of setup, the control panel should look like this:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_15_Demo.PNG)
+
+Since G3F calculates local variables by treating data waves as vectors, reasonable guesses for locals must be given for the fit to work. To do this, first press the **Simulate** button. A dialog box will appear:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_22_Demo.PNG)
+
+Click **No**.
+
+Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_16_Demo.PNG)
+
+Copy the fourth column of this wave.  Next, open **Oxidation\_ColLoc** and scroll to the 7th column. Paste the data from **Oxidation\_sim** here.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_17_Demo.PNG)
+
+Now the fit can be run as in Examples 1 and 2.
+
+**Running the Fit:**
+
+The global parameters displayed on the control panel correspond to the redox potentials and electron transfer coefficients of each mediator.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_21_Demo.PNG)
+
+As there are 2 mediators and myoglobin present, the data must be deconvoluted to isolate the spectrum and Nernstian profile of myoglobin. To do this, four local parameters are set (methylene green has two electron transfer steps), each corresponding to a spectrum specific to the analyte.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_20_Demo.PNG)
+
+Go to the **Matrix Constraints** button.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_19_Demo.PNG)
+
+Hold the mediator spectra row locals (K6 through K8) by checking the **Hold** field. When finished, press **Done**.
+
+Since the spectra of the known mediators and the analyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
+
+Paste this spectra into the Oxidation_RowLoc field.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
+
+To perform the fit, click **Do Fit Now!** The program will run for a few minutes and generate the fitted data.
+
+**Data Extraction and Plotting**
+
+Now that the simulation has been performed, the separate spectra can be plotted and compared.
+
+Go to the Data Browser field and select Oxidation\_RowLoc
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_5_Demo.png)
+
+Clicking on this brings up a set of data:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_6_Demo.png)
+
+This fitted data set corresponds to each individual spectrum of each mediator and myoglobin. To plot this data for easy comparison, go to
+
+Windows ->New Graph…
+
+Select Oxidation\_RowLoc in the left field, and Oxidation\_ROW\_FIT in the right field. Add the four mediator spectra as shown below.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_7_Demo.png)
+
+Click **Do It.**  This should generate a plot of each individual mediator and myoglobin:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_8_Demo.png)
+
+To extract the Nernstian profiles, go to the **Feedback positions** field on the main control panel. Alter the field as shown below:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_9_Demo.png)
+
+Click **Do Fit!** This will generate Nernstian curve waves for both experimental data and fits. To plot this data, go to:
+
+Windows -> New Graph…
+
+Plot the waves Oxidation_PRef vs. EOx (Raw oxidation data), Oxidation_Fit_PFit vs. EOx_Fit (fitted oxidation data), Reduction_PRef vs. ERd (Raw reduction data), and Reduction_Fit_PFit vs. ERd_Fit (fitted reduction data).
+
+The resulting graph should look like this:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_10_Demo.png)
+
+The upper trace (colored blue in the figure) is the oxidation, and the lower trace (colored red) is the reduction of myoglobin.
+
+By formatting the raw data as dots and keeping the fit solid, a graph should be generated like this:
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_11_Demo.png)
+
+From these traces, the redox potential of myoglobin can be determined. The multidimensional data has been successfully deconvoluted as in Example 1 and Example 2.
+
+**Extracting Thermodynamic Properties of Myoglobin**
+
+To extract the thermodynamic properties of myoglobin, go to the data browser, and click on W_Coeff.
+
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_24_Demo.JPG)
+
+These values correspond to the redox potential, the number of electrons transferred, a constant necessary for the function of the Nernstenian fit, and the amplitude of the fit. These values are all generated using the Nernstenian post-processing function.
+
+
 
