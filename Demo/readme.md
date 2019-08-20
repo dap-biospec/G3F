@@ -550,7 +550,7 @@ From these traces, the redox potential of myoglobin can be determined. The multi
 
 To extract the thermodynamic properties of myoglobin, go to the data browser, and click on W_Coeff.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_24_Demo.jpg)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_24_Demo.JPG)
 
 These values correspond to the redox potential, the number of electrons transferred, a constant necessary for the function of the Nernstenian fit, and the amplitude of the fit. These values are all generated using the Nernstenian post-processing function.
 
