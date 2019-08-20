@@ -350,7 +350,7 @@ Go to the **Fit to function** drop-down menu. Select &quot;SpecEChem\_4Spec\_4Sp
 
 Go to the **matrix constraints** button. In this interface, hold variables K0 through K5 and K8 through K11 as shown.
 
-![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_23_Demo.jpg)
+![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_23_Demo.JPG)
 
 Go to the **Options** tab. Check the box called **Epsilon**. This allows for the application of epsilon to matrix constraints. While not required, 2D or 3D global fits will **generally fail if epsilon is ignored**.
 
