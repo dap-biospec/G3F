@@ -352,7 +352,7 @@ Go to the **Global Variables** tab. Change the number on the dropdown menu (&quo
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_12_Demo.PNG)
 
-Click **No**. This will adjust the number of fitted global variables without requiring the user to input guesses.
+Click **No**. This will adjust the number of fitted global variables without requiring the user to input guesses. Type in global variable names as shown in earlier examples for species **D**.
 
 Go to the **Local Variables** tab. Go to the **Col(Z) Locals** field. Change the number on the dropdown menu to **6**. This is a necessary adjustment which will allow for the calculation of the population of myoglobin using local variables.
 
