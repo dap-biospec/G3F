@@ -484,7 +484,11 @@ Since G3F calculates local variables by treating data waves as vectors, reasonab
 
 Click **No**.
 
-Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked.
+**FOR THIS EXAMPLE ONLY: An error message will display, showing a singular matrix error. Acknowledge the error and continue setup.**
+
+Open the **Data browser** and open the **Oxidation\_sim** wave from Example #2. If the **Keep** field was checked during Example 2, this wave will contain population calculations for analytes. If this wave is not present, re-run Example 2 with the **Keep** field in the **Method** tab checked. 
+
+Alternatively, the user can input data from the Reduction_PRef wave as initial guesses for the population profile. If this method is chosen, copy/paste the data into Column 06 as in Example 3 and skip to **Running the Fit** below.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_16_Demo.PNG)
 
@@ -572,7 +576,7 @@ To extract the thermodynamic properties of myoglobin, go to the data browser, an
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_24_Demo.JPG)
 
-These values correspond to the redox potential, the number of electrons transferred, a constant necessary for the function of the Nernstenian fit, and the amplitude of the fit. These values are all generated using the Nernstenian post-processing function.
+These values correspond to the redox potential, the number of electrons transferred, a constant necessary for the function of the Nernstenian fit, and the amplitude of the fit. These values are all generated using the Nernstenian post-processing function. These values are also printed in the command line.
 
 
 
