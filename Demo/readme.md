@@ -58,6 +58,8 @@ Go to the **Matrix Constraints** button.
 
 Hold all variables (K0 through K5; K8 through K10) by checking the **Hold** field. These correspond to the electron transfer coefficients and redox potentials of the mediators – all of which are known. The last two fields correspond to the electron transfer coefficient and redox potential of myoglobin. When finished, press **Done**.
 
+**Prior to continuing the demo, hit Simulate! This generates the needed fields for this and all following demos!**
+
 Since the spectra of the known mediators and the anlyte will be calculated using row locals, it is necessary to provide guesses for these variables. To do this, open the data browser and select MediatorSpectra. Highlight the spectra as shown and copy it.
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_18_Demo.PNG)
@@ -98,7 +100,11 @@ To extract the Nernstian profiles, go to the **Feedback positions** field on the
 
 ![alt text](https://github.com/dap-biospec/G3F/blob/master/Demo/DemoPictures/Pic_9_Demo.png)
 
-Click **Do Fit!** This will generate Nernstian curve waves for both experimental data and fits. To plot this data, go to:
+Click **Do Fit!** This will generate Nernstian curve waves for both experimental data and fits.
+
+**If this fit fails, set all fields in the Oxidation_ColLoc matrix to 0. This will likely solve the error**
+
+To plot this data, go to:
 
 Windows -> New Graph…
 
