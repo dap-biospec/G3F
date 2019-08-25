@@ -4,9 +4,12 @@
 
 The G3F (Global 3-dimensional Fit) is a simulation and fitting package for IgorPro. It allows to perform global spectral regression using flexible combinations of global parameters and dimensionally local (spectral) parameters on up to 3-dimensional matrix datasets.
 
-**How to use this manual:** This manual summarizes the capabilities of the G3F software IgorPro macro. The functions of all features are briefly summarized and documented for easy reference. Basic knowledge of Igor Pro operation and data structures within Igor Pro is assumed. **For quick help, hover over functions on the control panel for simple tooltips.**
+**General information:** G3F utilizes internal IgorPro engine (Levenberg-Marquardt algorithm) for non-linear regression and error minimization. Additional information on its implementaion can be found in the “Overview of Curve Fitting” section (page [III-153](https://www.wavemetrics.net/doc/igorman/III-08%20Curve%20Fitting.pdf#page=5)) of the Igor Pro manual. G3F reports overall chi-square of the regression and standard deviations of fitted parameters, as described in the “Estimates of Error” section (pages [III-153](https://www.wavemetrics.net/doc/igorman/III-08%20Curve%20Fitting.pdf#page=5), [III-193](https://www.wavemetrics.net/doc/igorman/III-08%20Curve%20Fitting.pdf#page=45), and [III-196/197](https://www.wavemetrics.net/doc/igorman/III-08%20Curve%20Fitting.pdf#page=48)) of the Igor Pro manual. G3F does not support weighted analysis at this time.  
+
+**How to use this manual:** This document summarizes the features and capabilities of the G3F software package for IgorPro. Basic knowledge of Igor Pro operation and data structures within Igor Pro is assumed. **For quick help, hover over functions on the control panel for simple tooltips.**
 
 For further detail on individual functions, consult the [G3F API](https://github.com/dap-biospec/G3F/blob/master/Docs/G3F_API.md)
+
 
 ### **Installation**
 
