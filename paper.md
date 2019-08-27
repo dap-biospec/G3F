@@ -48,7 +48,7 @@ Common to these examples is the need to describe a multi-dimensional experimenta
 The G3F package for IgorPro was initially developed to simultaneously analyze vibrational spectra of multiple isotopomers with overlapping modes in time-resolved Raman studies on enzyme TauD, where simple improvement of signal via time averaging was not possible [@Grzyska:2010]. 
 Analysis of a frequency vs. time 2D dataset with uniform properties of predictable vibrational bandshapes (global) and unknown speciation plots (local to each time point) allowed resolution of superimposed vibrations of two different species while improving resolution via signal sharing between spectra. 
 Also included were polynomial baselines, which varied between spectra. A similar approach was later used in the analysis of Raman spectra of methane monooxygenase [@Banerjee:2015].
-In more recent studies, it was used to obtain completely unknown difference infrared spectra of a redox transition with an unknown potential over a variable polynomial background [@John:2019a; @John:2019b].
+In more recent studies, it was used to obtain completely unknown difference spectra of a redox transition with an unknown potential over a variable polynomial background [@John:2019a; @John:2019b].
 In this case, analysis involved two orthogonal parametric vectors (frequency-dependent amplitudes vs. potential-dependent populations). 
 
 ## Implementation:
