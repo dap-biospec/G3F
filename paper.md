@@ -34,6 +34,7 @@ bibliography: paper.bib
 
 ## Rationale:
 Multi-dimensional non-linear global regression permits the investigation of quantitative relationships in complex datasets and to examine validity of proposed models. However, traditional multi-dimensional regression requires predictable variation of all parameters along every fitted dimension. This constraint may be difficult to satisfy, for example:
+
 - When noise in any particular dimension exceeds the signal of interest, such as with large variation of baselines due to thermal fluctuations, sample variability, or other of interference.
 - When the common signal is too complex for rational description using a reduced set of variables, such as encountered with multiple bands in high-resolution spectra. The unknown spectra of one or more species, involved in a predictable process, may be better described by a large set of independent coefficients that vary between discrete sampled energies (frequency, wavelength, mass, charge etc.) than by a limited set of Gaussian or Lorentzian peaks.
 - When observables cannot be accurately described using a trivial band shape or a distribution such as, for example, when a normally distributed signal is broadened by spectral resolution with a rectangular profile.
